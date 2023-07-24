@@ -2,6 +2,8 @@ package com.hackathon.message;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hackathon.model.Transaction;
+import com.hackathon.model.TransactionMega;
+import com.hackathon.model.TransactionNegative;
 import com.hackathon.processor.TransactionProcessor;
 import com.hackathon.repository.TransactionRepo;
 import lombok.AllArgsConstructor;
@@ -20,11 +22,20 @@ public class TransactionListener {
     @JmsListener(destination = "transactionListener")
     public void processMessage(String content) throws Exception{
         log.info("Processing " + content);
-        var transaction = objectMapper.readValue(content, Transaction.class);
 
-        transaction = TransactionProcessor.filterDescription(transaction);
+        var transactionMega = objectMapper.readValue(content, TransactionMega.class);
+        var transactionNegative = objectMapper.readValue(content, TransactionNegative.class);
 
-        transactionRepo.save(transaction);
+        String[] results = TransactionProcessor.filterDescription(transactionMega.getDescription());
+        transactionMega.setDescriptionCensored(results[0]);
+        transactionMega.setSentimentScore(results[1]);
+
+        transactionNegative.setSentimentScore(transactionMega.getSentimentScore());
+
+        if (Double.parseDouble(transactionNegative.getSentimentScore()) < 0){
+            transactionRepo.save(transactionNegative);
+        }
+
     }
 
 }

@@ -72,20 +72,16 @@ public class SentimentAnalysisService {
             boolean isBadWord = false;
 
             for (String badWord : badWords) {
-                // Check if the bad word occurs as a complete word within the word
                 if (lowercaseWord.contains(badWord)) {
-                    // Replace the entire word with asterisks (*)
                     filteredDescription.append("*".repeat(word.length())).append(" ");
                     isBadWord = true;
-                    break; // Stop checking other bad words as this word has been censored
+                    break;
                 }
             }
-
             if (!isBadWord) {
                 filteredDescription.append(word).append(" ");
             }
         }
-
         return filteredDescription.toString().trim();
     }
 }

@@ -69,19 +69,14 @@ public class SentimentAnalysisService {
 
         for (String word : words) {
             String lowercaseWord = word.toLowerCase();
-            boolean isBadWord = false;
-
-            for (String badWord : badWords) {
-                if (lowercaseWord.contains(badWord)) {
-                    filteredDescription.append("*".repeat(word.length())).append(" ");
-                    isBadWord = true;
-                    break;
-                }
-            }
-            if (!isBadWord) {
+            if (badWords.contains(lowercaseWord)) {
+                String replacement = "*".repeat(word.length());
+                filteredDescription.append(replacement).append(" ");
+            } else {
                 filteredDescription.append(word).append(" ");
             }
         }
+
         return filteredDescription.toString().trim();
     }
 }

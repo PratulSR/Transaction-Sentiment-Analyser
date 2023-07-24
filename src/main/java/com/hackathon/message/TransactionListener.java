@@ -22,13 +22,7 @@ public class TransactionListener {
         log.info("Processing " + content);
         var transaction = objectMapper.readValue(content, Transaction.class);
 
-//        log.info("BEFORE : " + transaction.getSentiment());
-
-        // Add a Service here
-
         transaction = TransactionProcessor.filterDescription(transaction);
-
-        log.info("AFTER : " + transaction.getDescription().toLowerCase().contains("desc"));
 
         transactionRepo.save(transaction);
     }

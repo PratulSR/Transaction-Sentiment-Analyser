@@ -21,7 +21,6 @@ public class TransactionProcessor {
         try (LanguageServiceClient language = LanguageServiceClient.create()) {
 
             // The text to analyze
-//            String text = "Hello, world!";
             String text = transaction.getDescription();
             Document doc = Document.newBuilder().setContent(text).setType(Type.PLAIN_TEXT).build();
 

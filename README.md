@@ -1,12 +1,12 @@
-# Transaction Sentiment Analyzer (MacquarieHack)
+# Transaction Sentiment Analyser
 
-This Spring Boot application is designed to process financial transactions by analyzing the sentiment of their descriptions. It utilizes the **Google Cloud Natural Language API** to detect negative sentiment and automatically censors profanity or "bad words" from the transaction details.
+This Spring Boot application is designed to process financial transactions by analysing the sentiment of their descriptions. It utilises the **Google Cloud Natural Language API** to detect negative sentiment and automatically censors profanity or "bad words" from the transaction details.
 
-This project appears to be a solution for a hackathon challenge (implied by the repository name), likely focusing on improving customer experience or compliance by monitoring and cleaning up transaction data.
+This project was completed as part of the Macquarie Hackathon under Coding Fest 2023, focusing on improving customer experience and compliance by monitoring and cleaning up transaction data.
 
 ## Features
 
--   **Sentiment Analysis**: Analyzes transaction descriptions to determine if the sentiment is positive, neutral, or negative using Google Cloud AI.
+-   **Sentiment Analysis**: Analyses transaction descriptions to determine if the sentiment is positive, neutral, or negative using Google Cloud AI.
 -   **Profanity Censorship**: Automatically filters out specific keywords defined in a configuration file (`bad_words.json`) if the sentiment is negative.
 -   **REST API**: Provides endpoints to submit transactions for processing and retrieve flagged/processed transactions.
 -   **Data Persistence**: Stores transaction data using MongoDB.
@@ -64,7 +64,7 @@ Ensure MongoDB is running on the default port or configure the connection string
 ## API Endpoints
 
 ### 1. Process a Transaction
-Analyzes a transaction description, calculates a sentiment score, and censors bad words if the sentiment is negative.
+Analyses a transaction description, calculates a sentiment score, and censors bad words if the sentiment is negative.
 
 -   **URL:** `/transaction/publish`
 -   **Method:** `POST`

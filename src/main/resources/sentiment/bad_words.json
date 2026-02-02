@@ -4146,5 +4146,17 @@
       "sexual"
     ],
     "severity": 3
+  },
+  {
+    "id": "die",
+    "match": "die"
+  },
+  {
+    "id": "choke",
+    "match": "choke"
+  },
+  {
+    "id": "stupid",
+    "match": "stupid"
   }
 ]

@@ -3,6 +3,7 @@ package com.hackathon.controller;
 import com.hackathon.model.Transaction;
 import com.hackathon.model.TransactionNegative;
 import com.hackathon.processor.TransactionProcessor;
+import com.hackathon.repository.TransactionNegativeRepo;
 import com.hackathon.repository.TransactionRepo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @Slf4j
 public class TransactionController {
-    private TransactionRepo transactionRepo;
+    private TransactionNegativeRepo transactionRepo;
 
     @GetMapping("transaction")
     public Iterable<TransactionNegative> getTransactions(){
